@@ -105,21 +105,13 @@ jetson_board()
 ###########################
 
 # Extract jetson chip id
-JETSON_CHIP_ID=""
-if [ -f /sys/module/tegra_fuse/parameters/tegra_chip_id ]; then
-    JETSON_CHIP_ID=$(cat /sys/module/tegra_fuse/parameters/tegra_chip_id)
-fi
+JETSON_CHIP_ID="33"
+
 # Ectract type board
-JETSON_SOC=""
-if [ -f /proc/device-tree/compatible ]; then
-    # Extract the last part of name
-    JETSON_SOC=$(tr -d '\0' < /proc/device-tree/compatible | sed -e 's/.*,//')
-fi
+JETSON_SOC="tegra210"
+
 # Extract boardids if exists
-JETSON_BOARDIDS=""
-if [ -f /proc/device-tree/nvidia,boardids ]; then
-    JETSON_BOARDIDS=$(tr -d '\0' < /proc/device-tree/nvidia,boardids)
-fi
+JETSON_BOARDIDS="2530:0032:E0"
 
 # Code name
 JETSON_CODENAME=""
